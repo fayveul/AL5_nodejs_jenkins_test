@@ -11,16 +11,18 @@ app.get('/', function (req, res, next) {
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
-app.post('/insererNom', function (req, res, next) {
-    var nom = req.body.nom;
-    console.log("variable nom : "+nom);
-    var testNom = insererNom(nom); //Pour les tests unitaires
-    res.send('{"nom":"'+nom+'"}');
-});
-
 exports.insererNom = function(nom){
     return "bonjour "+nom;
 }
+
+app.post('/insererNom', function (req, res, next) {
+    var nom = req.body.nom;
+    console.log("variable nom : "+nom);
+    //var testNom = insererNom(nom); //Pour les tests unitaires
+    res.send('{"nom":"'+nom+'"}');
+});
+
+
 
 
 app.listen(8282, function () {
